@@ -1,0 +1,31 @@
+<h1>New Transfer</h1>
+
+<%= form_with model: @transfer do |form| %>
+  <div>
+    <%= form.label :value %><br>
+    <%= form.text_field :value %><br>
+    <% @transfer.errors.full_messages_for(:value).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.number_field :description %>
+    <% @transfer.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :happened_on %><br>
+    <%= form.datetime_field :happened_on, { value: Time.now } %>
+    <% @transfer.errors.full_messages_for(:happened_on).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
